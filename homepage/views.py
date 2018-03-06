@@ -4,7 +4,7 @@ from .models import User, Experience, Education, Skill, Interest, AwardAndCertif
 
 def homepage(request, user):
     user_info = User.objects.get(user=user)
-    user_id = User.objects.get(user="luo").id
+    user_id = User.objects.get(user=user).id
     experience_info = Experience.objects.filter(user_id=user_id)
     education_info = Education.objects.filter(user_id=user_id)
     skill_info = Skill.objects.filter(user_id=user_id)
