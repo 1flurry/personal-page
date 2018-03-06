@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTH_USER_MODEL = "homepage.UserProfile"
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'homepage'
+    'homepage',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +80,7 @@ WSGI_APPLICATION = 'personal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'personal',
+        'NAME': 'personal_page',
         'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'root',
@@ -116,13 +119,11 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
