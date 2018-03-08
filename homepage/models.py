@@ -20,7 +20,7 @@ class UserProfile(AbstractUser):
 
     class Meta:
         verbose_name = '用户信息'
-        verbose_name_plural = '用户信息'
+        verbose_name_plural = verbose_name
 
 
 class Experience(models.Model):
@@ -36,7 +36,7 @@ class Experience(models.Model):
 
     class Meta:
         verbose_name = '工作经历'
-        verbose_name_plural = '工作经历'
+        verbose_name_plural = verbose_name
 
 
 class Education(models.Model):
@@ -54,7 +54,7 @@ class Education(models.Model):
 
     class Meta:
         verbose_name = '教育经历'
-        verbose_name_plural = '教育经历'
+        verbose_name_plural = verbose_name
 
 
 class Skill(models.Model):
@@ -67,7 +67,7 @@ class Skill(models.Model):
 
     class Meta:
         verbose_name = '工作技能'
-        verbose_name_plural = '工作技能'
+        verbose_name_plural = verbose_name
 
 
 class Interest(models.Model):
@@ -79,19 +79,21 @@ class Interest(models.Model):
 
     class Meta:
         verbose_name = '兴趣爱好'
-        verbose_name_plural = '兴趣爱好'
+        verbose_name_plural = verbose_name
 
 
-class AwardAndCertification(models.Model):
+class Project(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name='用户名')
-    award_or_certification = models.CharField(max_length=128, verbose_name='获奖情况及证书')
+    project = models.CharField(max_length=128, verbose_name='作品')
+    project_url = models.CharField(max_length=128, verbose_name='项目url')
+    project_desc = models.TextField(verbose_name='作品详情')
 
     def __str__(self):
-        return self.user.username
+        return '{0}({1})'.format(self.user.username, self.project)
 
     class Meta:
-        verbose_name = '获奖及证书'
-        verbose_name_plural = '获奖及证书'
+        verbose_name = '项目作品'
+        verbose_name_plural = verbose_name
 
 
 
